@@ -1,3 +1,20 @@
-a {
-  color: blue;
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+
+$custom-colors: (
+  c_blue: #5095ec,
+  c_black: #505050,
+  c_second_tx: #8f8f8f,
+  c_grey: #d3d8de,
+  c_bg: #f1f1f1,
+  c_white: #ffffff,
+  c_bg2: #fafafa,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  font-size: 14px;
 }
