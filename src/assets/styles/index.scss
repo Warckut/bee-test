@@ -12,9 +12,12 @@ $custom-colors: (
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
+$enable-cssgrid: true;
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 body {
   font-size: 14px;
+  color: #505050;
+  background-color: #f1f1f1;
 }

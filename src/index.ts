@@ -1,4 +1,5 @@
-const app = document.createElement("h1");
-app.innerText = "Hello World";
+import App from "./App";
+import "./assets/styles/index.scss";
 
-document.getElementById("root")!.append(app);
+const app = new App();
+app.render();
