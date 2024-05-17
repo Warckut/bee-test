@@ -21,12 +21,13 @@ const routes: Record<string, { linkLabel: string; component: any }> = {
 
 class Router {
   static container = document.getElementById("root")!;
+  startTime: number;
   currentPage: string;
 
   constructor() {
+    this.startTime = new Date().getTime();
     let { pathname } = window.location;
     if (pathname === "/") pathname = "/activity";
-
     window.history.pushState({}, "", pathname);
     this.currentPage = pathname;
   }
@@ -51,7 +52,9 @@ class Router {
       return;
     }
 
-    const page = new routes[this.currentPage].component();
+    const page = new routes[this.currentPage].component({
+      startTime: this.startTime,
+    });
 
     Router.container.innerHTML = "";
     Router.container.appendChild(header.render());
