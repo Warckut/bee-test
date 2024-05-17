@@ -5,15 +5,15 @@ import MapPage from "./pages/MapPage";
 import TimePage from "./pages/TimePage";
 
 const routes: Record<string, { linkLabel: string; component: any }> = {
-  "/activity": {
+  "/bee-test/activity": {
     linkLabel: "Activity",
     component: ActivityPage,
   },
-  "/map": {
+  "/bee-test/map": {
     linkLabel: "Map",
     component: MapPage,
   },
-  "/time": {
+  "/bee-test/time": {
     linkLabel: "Time",
     component: TimePage,
   },
@@ -27,13 +27,13 @@ class Router {
   constructor() {
     this.startTime = new Date().getTime();
     let { pathname } = window.location;
-    if (pathname === "/") pathname = "/activity";
+    if (pathname === "/bee-test") pathname = "/bee-test/activity";
     window.history.pushState({}, "", pathname);
     this.currentPage = pathname;
   }
 
   navigate(routeName: string) {
-    const pathname = "/" + routeName;
+    const pathname = "/bee-test/" + routeName;
     window.history.pushState({}, "", pathname);
     this.currentPage = pathname;
     this.render();
