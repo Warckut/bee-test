@@ -27,7 +27,7 @@ class Router {
   constructor() {
     this.startTime = new Date().getTime();
     let { pathname } = window.location;
-    if (pathname === "/bee-test") pathname = "/bee-test/activity";
+    if (pathname === "/bee-test/") pathname = "/bee-test/activity";
     window.history.pushState({}, "", pathname);
     this.currentPage = pathname;
   }
