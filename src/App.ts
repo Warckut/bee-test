@@ -7,15 +7,15 @@ import TimePage from "./pages/TimePage";
 const routes: Record<string, { linkLabel: string; component: any }> = {
   "/activity": {
     linkLabel: "Activity",
-    component: new ActivityPage(),
+    component: ActivityPage,
   },
   "/map": {
     linkLabel: "Map",
-    component: new MapPage(),
+    component: MapPage,
   },
   "/time": {
     linkLabel: "Time",
-    component: new TimePage(),
+    component: TimePage,
   },
 };
 
@@ -51,7 +51,7 @@ class Router {
       return;
     }
 
-    const page = routes[this.currentPage].component;
+    const page = new routes[this.currentPage].component();
 
     Router.container.innerHTML = "";
     Router.container.appendChild(header.render());

@@ -6,7 +6,15 @@
     "module": "CommonJS",
     "outDir": "dist",
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types",
+      "./node_modules/@yandex/ymaps3-types"
+    ],
+    "paths": {
+      "ymaps3": ["./node_modules/@yandex/ymaps3-types"]
+    }
   },
   "include": ["src", "custom.d.ts"]
 }

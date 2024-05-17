@@ -3,7 +3,7 @@ import "./_dropdown.scss";
 
 interface DropdownProps {
   label: string;
-  timeAgo: string;
+  timeAgo?: string;
   isOpenDefault: boolean;
   className?: string;
   child: any;
@@ -14,7 +14,7 @@ class Dropdown {
   isOpen: boolean;
   child: { render: () => HTMLElement };
   label: string;
-  timeAgo: string;
+  timeAgo: string | null;
 
   constructor({
     label,
@@ -25,7 +25,7 @@ class Dropdown {
   }: DropdownProps) {
     this.isOpen = isOpenDefault;
     this.label = label;
-    this.timeAgo = timeAgo;
+    this.timeAgo = timeAgo ?? null;
     this.child = child;
     this.container = document.createElement("div");
     if (className) this.container.className = className;
@@ -44,8 +44,13 @@ class Dropdown {
     });
     menu.innerHTML = `
       <div class="me-auto fs-6"<span>${this.label}</span></div>
-      <img src="${timeImg}" alt="time ago" class="me-2"/>
-      <div class="me-4"><span>${this.timeAgo}</span></div>
+      ${
+        this.timeAgo &&
+        `
+          <img src="${timeImg}" alt="time ago" class="me-2"/>
+          <div class="me-4"><span>${this.timeAgo}</span></div>
+        `
+      }
     `;
 
     this.container.innerHTML = "";
