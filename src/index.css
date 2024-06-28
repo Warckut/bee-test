@@ -1,0 +1,7 @@
+body {
+  overflow-y: scroll;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: var(--color-black);
+  background-color: var(--color-bg);
+}
