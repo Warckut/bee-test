@@ -15,9 +15,13 @@ function formatTime(seconds) {
   const secs = Math.floor(seconds % 60);
   const result = [];
 
-  result.push(hrs < 10 ? '0' + hrs : hrs);
-  result.push(mins < 10 ? '0' + mins : mins);
-  result.push(secs < 10 ? '0' + secs : secs);
+  result.push(addNonSignificantZero(hrs));
+  result.push(addNonSignificantZero(mins));
+  result.push(addNonSignificantZero(secs));
 
   return result.join(':');
+}
+
+function addNonSignificantZero(time) {
+  return time < 10 ? '0' + time : time;
 }
