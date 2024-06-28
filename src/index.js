@@ -13,7 +13,7 @@ const dispatch = {
 function requestPage(page) {
   return new Promise((res, rej) => {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', `./pages/${page}/index.html`);
+    xhr.open('GET', `./src/pages/${page}/index.html`);
     xhr.onload = () => res(xhr.responseText);
     xhr.onerror = rej;
     xhr.send();
