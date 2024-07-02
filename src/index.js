@@ -7,7 +7,7 @@ let clear = () => {};
 const baseurl = '/bee-test';
 
 const routes = {
-  '/': () => redirect('/activity'),
+  '/': () => routes['/activity'](),
   '/activity': () => goTo('activity'),
   '/map': () => goTo('map'),
   '/time': () => goTo('time'),
@@ -16,16 +16,10 @@ const routes = {
 routes[document.location.pathname]();
 const startTime = new Date().getTime();
 
-function redirect(to) {
-  history.pushState({}, '', to);
-  routes[to]();
-}
-
 function goTo(page) {
   var content = document.getElementById('content');
   requestPage(page)
     .then((html) => {
-      console.log(page)
       clear();
       history.pushState({}, '', baseurl + page);
       content.innerHTML = html;
