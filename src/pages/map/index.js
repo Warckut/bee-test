@@ -1,11 +1,5 @@
 export default function initMap() {
-  const timeout = setTimeout(() => {
-    loadMap();
-  }, 1000);
-
-  return () => {
-    clearTimeout(timeout);
-  };А
+  loadMap();
 }
 
 function loadMap() {
