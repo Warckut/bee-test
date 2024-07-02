@@ -17,7 +17,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <script src="https://api-maps.yandex.ru/v3/?apikey=986846d7-9dd1-47b1-a98e-eca824f87a2b&lang=ru_RU"></script>
+
     <link rel="stylesheet" href="./src/variables.css" />
     <link rel="stylesheet" href="./src/index.css" />
   </head>
@@ -60,20 +60,20 @@
               <a
                 class="nav-link text-c_black d-flex align-items-center bg-c_bg"
                 style="background-color: var(--color-bg)"
-                href="#activity"
+                href="/activity"
               >
                 <img src="./images/activity.svg" alt="activity" class="me-2" />
                 <span style="color: var(--color-black)">Activity</span>
               </a>
             </li>
             <li>
-              <a class="nav-link text-c_black d-flex align-items-center" href="#map">
+              <a class="nav-link text-c_black d-flex align-items-center" href="/map">
                 <img src="./images/map.svg" alt="map" class="me-2" />
                 <span style="color: var(--color-black)">Map</span>
               </a>
             </li>
             <li>
-              <a class="nav-link text-c_black d-flex align-items-center" href="#time">
+              <a class="nav-link text-c_black d-flex align-items-center" href="/time">
                 <img src="./images/time.svg" alt="time" class="me-2" />
                 <span style="color: var(--color-black)">Time</span>
               </a>
@@ -83,6 +83,7 @@
       </nav>
     </div>
     <div id="content"></div>
+    <script src="https://api-maps.yandex.ru/v3/?apikey=986846d7-9dd1-47b1-a98e-eca824f87a2b&lang=ru_RU"></script>
     <script type="module" src="./src/index.js"></script>
   </body>
 </html>
