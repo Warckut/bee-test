@@ -7,10 +7,10 @@ let clear = () => {};
 const baseurl = '/bee-test';
 
 const routes = {
-  '/': () => routes['/activity'](),
-  '/activity': () => goTo('activity'),
-  '/map': () => goTo('map'),
-  '/time': () => goTo('time'),
+  [`${baseurl}`]: () => routes[`${baseurl}activity`](),
+  [`${baseurl}activity`]: () => goTo('activity'),
+  [`${baseurl}map`]: () => goTo('map'),
+  [`${baseurl}time`]: () => goTo('time'),
 };
 
 routes[document.location.pathname]();
