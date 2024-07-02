@@ -4,7 +4,7 @@ import initTime from './pages/time/index.js';
 
 let clear = () => {};
 
-const baseurl = '/bee-test';
+const baseurl = '/bee-test/';
 
 const routes = {
   [`${baseurl}`]: () => routes[`${baseurl}activity`](),
