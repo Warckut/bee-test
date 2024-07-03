@@ -1,27 +1,23 @@
 export default function initTime(time) {
-  updateTimer(time);
-  const interval = setInterval(updateTimer, 1000, time);
+  const timer = document.getElementById('timer');
+
+  updateTimer(timer, time);
+  const interval = setInterval(updateTimer, 1000, timer, time);
+  timer.setAttribute('data-interval-id', interval);
   return () => clearInterval(interval);
 }
 
-function updateTimer(time) {
+function updateTimer(timer, time) {
   const seconds = Math.floor((new Date().getTime() - time) / 1000);
-  document.getElementById('timer').innerText = formatTime(seconds);
+  timer.innerText = formatTime(seconds);
 }
 
-function formatTime(seconds) {
-  const hrs = Math.floor(seconds / 3600);
-  const mins = Math.floor((seconds % 3600) / 60);
-  const secs = Math.floor(seconds % 60);
-  const result = [];
+function formatTime(time) {
+  const hours = Math.floor(time / 3600);
+  const minutes = Math.floor((time % 3600) / 60);
+  const seconds = Math.floor(time % 60);
 
-  result.push(addNonSignificantZero(hrs));
-  result.push(addNonSignificantZero(mins));
-  result.push(addNonSignificantZero(secs));
+  const result = [hours, minutes, seconds].map((v) => String(v).padStart(2, '0'));
 
   return result.join(':');
-}
-
-function addNonSignificantZero(time) {
-  return time < 10 ? '0' + time : time;
 }

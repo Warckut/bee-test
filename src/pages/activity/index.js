@@ -3,12 +3,14 @@ export default function initActivity() {
   dropdowns.forEach((element) => {
     element.addEventListener('click', (e) => {
       const img = e.currentTarget.lastElementChild;
-      const rotate = Number(img.style.transform.match(/\d+/) ?? 0);
-
-      img.style.transform = `rotate(${rotate > 0 ? 0 : 180}deg)`;
-      e.currentTarget.nextElementSibling.style.display = rotate > 0 ? 'none' : 'block';
+      const content = e.currentTarget.nextElementSibling;
+      if (img.classList.contains('up')) {
+        img.classList.remove('up');
+        content.style.display = 'none';
+      } else {
+        img.classList.add('up');
+        content.style.display = 'block';
+      }
     });
   });
-
-  return () => {};
 }
