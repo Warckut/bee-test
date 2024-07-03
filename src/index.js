@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const target = e.currentTarget;
       target.style.backgroundColor = 'var(--color-bg)';
-      history.pushState({}, '', target.href);
+      const page = target.getAttribute('href');
+      history.pushState({}, '', baseurl + page);
       router();
     });
   });
