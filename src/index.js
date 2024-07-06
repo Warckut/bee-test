@@ -1,30 +1,46 @@
-import initActivity from './pages/activity/index.js';
-import initMap from './pages/map/index.js';
-import initTime from './pages/time/index.js';
+import activity from './pages/activity/index.js';
+import map from './pages/map/index.js';
+import time from './pages/time/index.js';
 
 window.addEventListener('popstate', router);
 document.addEventListener('DOMContentLoaded', init);
 
-const baseurl = '/bee-test';
-const startTime = new Date().getTime();
+window.BASEURL = '/bee-test';
+window.START_TIME = new Date().getTime();
 
 const routes = {
-  [`${baseurl}/activity`]: { page: 'activity', init: initActivity },
-  [`${baseurl}/map`]: { page: 'map', init: initMap },
-  [`${baseurl}/time`]: { page: 'time', init: () => initTime(startTime) },
+  [`${window.BASEURL}/`]: activity,
+  [`${window.BASEURL}/activity`]: activity,
+  [`${window.BASEURL}/map`]: map,
+  [`${window.BASEURL}/time`]: time,
 };
 
 async function router() {
-  let view = routes[location.pathname];
+  const view = routes[location.pathname];
+  if (!view) {
+    document.getElementById('contnet').innerHTML(`
+      <h1 style="width: 100%; text-align: center;">404 Not found</h1>
+    `);
+    return;
+  }
+
+  changeActiveTab(view.page);
+
   const result = await fetch(`./src/pages/${view.page}/index.html`);
   const html = await result.text();
   document.getElementById('content').innerHTML = html;
   view.init();
 }
 
-function init() {
-  history.pushState({}, '', baseurl + '/activity');
+async function init() {
+  const root = document.getElementById('root');
+  const header = await fetchHeader();
+  root.insertBefore(header, root.firstChild);
   router();
+
+  document.getElementById('back').addEventListener('click', () => {
+    history.back();
+  });
 
   const navs = document.querySelectorAll('#nav a');
   navs.forEach((element) => {
@@ -32,25 +48,26 @@ function init() {
   });
 }
 
+async function fetchHeader() {
+  const header = document.createElement('div');
+
+  const result = await fetch(`./src/header.html`);
+  header.innerHTML = await result.text();
+  return header;
+}
+
 function handleChangeTab(e) {
   e.preventDefault();
-  const activeTab = document.querySelector('#nav a.active-tab');
-  const activePage = activeTab.getAttribute('href');
   const nextTab = e.currentTarget;
-
-  if (activePage === '/time') {
-    const interval = parseInt(document.getElementById('timer').dataset.intervalId);
-    clearInterval(interval);
-  }
-
-  changeActiveTabe(activeTab, nextTab);
-
   const page = nextTab.getAttribute('href');
-  history.pushState({}, '', baseurl + page);
+  history.pushState({}, '', window.BASEURL + page);
   router();
 }
 
-function changeActiveTabe(prev, next) {
-  prev.classList.remove('active-tab');
-  next.classList.add('active-tab');
+function changeActiveTab(page) {
+  const activetab = document.querySelector('#nav a.active-tab');
+  const nextTab = document.getElementById(page);
+
+  activetab.classList.remove('active-tab');
+  nextTab.classList.add('active-tab');
 }

@@ -1,4 +1,4 @@
-export default function initActivity() {
+function initActivity() {
   const dropdowns = document.querySelectorAll('.menu');
   dropdowns.forEach((element) => {
     element.addEventListener('click', (e) => {
@@ -14,3 +14,7 @@ export default function initActivity() {
     });
   });
 }
+
+const activityPage = { page: 'activity', init: initActivity };
+
+export default activityPage;
