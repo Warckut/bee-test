@@ -1,0 +1,50 @@
+.activityPage {
+  background-color: var(--color-bg);
+  color: var(--color-black);
+}
+
+.posts article {
+  background-color: var(--color-bg-2);
+}
+
+.posts .authorName {
+  color: var(--color-primary);
+}
+
+.profile div {
+  background-color: var(--color-bg-2);
+}
+
+.profile {
+  font-size: 14px;
+}
+
+.profile .menu {
+  font-weight: 500;
+}
+
+.profile textarea {
+  height: 90px;
+  resize: none;
+  font-size: 14px;
+}
+
+.profile button {
+  font-size: 14px;
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-bg-2);
+  border-radius: 3px;
+  border: none;
+}
+
+.profile button:hover {
+  opacity: 0.8;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 200px
+}
