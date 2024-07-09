@@ -13,6 +13,6 @@ function initMap() {
   map.addOverlay(placemark);
 }
 
-const mapPage = { page: 'map', init: initMap };
+const mapPage = { name: 'map', init: initMap };
 
 export default mapPage;

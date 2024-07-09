@@ -1,5 +1,11 @@
+.mapPage {
+  background-color: var(--color-bg);
+  color: var(--color-black);
+  height: calc(100vh - 104px);
+}
+
 .map {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-2);
 }
 
 #map-container {

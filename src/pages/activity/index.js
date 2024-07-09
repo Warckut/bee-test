@@ -15,6 +15,6 @@ function initActivity() {
   });
 }
 
-const activityPage = { page: 'activity', init: initActivity };
+const activityPage = { name: 'activity', init: initActivity };
 
 export default activityPage;

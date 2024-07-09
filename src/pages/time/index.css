@@ -1,3 +1,9 @@
+.timePage {
+  background-color: var(--color-bg);
+  color: var(--color-black);
+  height: calc(100vh - 104px);
+}
+
 section.time {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-2);
 }

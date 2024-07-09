@@ -5,31 +5,37 @@ import time from './pages/time/index.js';
 window.addEventListener('popstate', router);
 document.addEventListener('DOMContentLoaded', init);
 
-window.BASEURL = '/bee-test';
-window.START_TIME = new Date().getTime();
+const BASEURL = '/bee-test';
+const START_TIME = new Date().getTime();
+
+const props = {
+  'time': { startTime: START_TIME },
+  'activity': {},
+  'map': {},
+}
 
 const routes = {
-  [`${window.BASEURL}/`]: activity,
-  [`${window.BASEURL}/activity`]: activity,
-  [`${window.BASEURL}/map`]: map,
-  [`${window.BASEURL}/time`]: time,
+  [`${BASEURL}/`]: activity,
+  [`${BASEURL}/activity`]: activity,
+  [`${BASEURL}/map`]: map,
+  [`${BASEURL}/time`]: time,
 };
 
 async function router() {
-  const view = routes[location.pathname];
-  if (!view) {
+  const page = routes[location.pathname];
+  if (!page) {
     document.getElementById('contnet').innerHTML(`
       <h1 style="width: 100%; text-align: center;">404 Not found</h1>
     `);
     return;
   }
 
-  changeActiveTab(view.page);
+  changeActiveTab(page.name);
 
-  const result = await fetch(`./src/pages/${view.page}/index.html`);
+  const result = await fetch(`./src/pages/${page.name}/index.html`);
   const html = await result.text();
   document.getElementById('content').innerHTML = html;
-  view.init();
+  page.init(props[page.name]);
 }
 
 async function init() {
@@ -60,7 +66,7 @@ function handleChangeTab(e) {
   e.preventDefault();
   const nextTab = e.currentTarget;
   const page = nextTab.getAttribute('href');
-  history.pushState({}, '', window.BASEURL + page);
+  history.pushState({}, '', BASEURL + page);
   router();
 }
 

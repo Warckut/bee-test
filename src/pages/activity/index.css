@@ -1,9 +1,18 @@
+.activityPage {
+  background-color: var(--color-bg);
+  color: var(--color-black);
+}
+
 .posts article {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-2);
+}
+
+.posts .authorName {
+  color: var(--color-primary);
 }
 
 .profile div {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-2);
 }
 
 .profile {
@@ -23,8 +32,8 @@
 .profile button {
   font-size: 14px;
   width: 100%;
-  background-color: var(--color-blue);
-  color: var(--color-white);
+  background-color: var(--color-primary);
+  color: var(--color-bg-2);
   border-radius: 3px;
   border: none;
 }

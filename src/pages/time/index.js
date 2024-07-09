@@ -1,11 +1,12 @@
-function initTime() {
+function initTime({ startTime }) {
   const timer = document.getElementById('timer');
 
-  updateTimer(timer, START_TIME);
-  const interval = setInterval(updateTimer, 1000, timer, START_TIME);
+  updateTimer(timer, startTime);
+  const interval = setInterval(updateTimer, 1000, timer, startTime);
 
   window.addEventListener('popstate', () => {
-    if (location.pathname !== `${window.BASEURL}/time`) {
+    const page = location.pathname.split('/').pop();
+    if (page !== 'time') {
       clearInterval(interval);
     }
   });
@@ -25,7 +26,7 @@ function formatTime(time) {
 }
 
 const timePage = {
-  page: 'time',
+  name: 'time',
   init: initTime,
 };
 
